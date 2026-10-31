@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GlobalInternet.py — Python Software Company</title>
+<meta name="description" content="GlobalInternet.py — Python-based software company from Haiti, founded by Gesner Deslandes. 50+ software products, custom development, AI, dashboards, education, robotics." />
+<meta name="author" content="Gesner Deslandes" />
+<meta name="google-adsense-account" content="ca-pub-1238061430437782" />
+<meta name="mitgo-verification" content="f264c89d-a0eb-47df-9591-9cd2d09e17d9" />
+<meta name="mitgo-verification" content="c807768c-7df7-4ebd-95a8-3737a906f92d" />
+<meta name="mitgo-verification" content="9030315c-9bfb-49af-940b-5526ce5dca6e" />
+<meta name="theme-color" content="#1e3c72" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" class="brand">
+      <span class="brand-globe">🌐</span>
+      <span class="brand-text"><strong>GlobalInternet.py</strong><small>Python Software Company</small></span>
+    </a>
+    <div class="header-controls">
+      <label class="lang-picker">
+        <span>🌐 Interface</span>
+        <select id="lang-select">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+        </select>
+      </label>
+      <button id="sidebar-toggle" class="menu-btn" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SIDEBAR ================= -->
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+    <img src="https://flagcdn.com/w320/ht.png" width="60" alt="Haiti flag" class="flag" />
+
+    <h3>🎤 Voice Language</h3>
+    <select id="voice-lang">
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+      <option value="zh">中文</option>
+    </select>
+    <button id="voice-btn" class="btn-side">🎙️ AI Female Voice — Company Overview</button>
+
+    <h3>📱 Connect With Us</h3>
+    <ul class="social-list">
+      <li><a href="https://www.linkedin.com/notifications/?filter=all" target="_blank" rel="noopener">🔗 LinkedIn</a></li>
+      <li><a href="https://www.facebook.com/profile.php?id=61589703309231" target="_blank" rel="noopener">📘 Facebook</a></li>
+      <li><a href="https://www.tiktok.com/@globalintert.py" target="_blank" rel="noopener">🎵 TikTok</a></li>
+      <li><a href="https://www.youtube.com/@GlobalInternet-x3d" target="_blank" rel="noopener">▶️ YouTube</a></li>
+    </ul>
+
+    <h3>Founder & Developer</h3>
+    <p><strong>Gesner Deslandes</strong></p>
+    <p>📞 WhatsApp: (509) 4738-5663</p>
+    <p>📧 deslandes78@gmail.com</p>
+    <p>🌐 <a href="https://globalinternetsitepy-abh7v6tnmskxxnuplrdcgk.streamlit.app/" target="_blank" rel="noopener">Main website</a></p>
+
+    <h3>📄 My CV</h3>
+    <a class="btn-side" href="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20CV%20Python%202026.docx" target="_blank" rel="noopener">📥 Download CV (Python Developer 2026)</a>
+
+    <h3>Legal</h3>
+    <details><summary>📜 Privacy Policy</summary>
+      <p><strong>Privacy Policy</strong></p>
+      <p>We collect IP, browser info, and (when you contact us) your email address. We use it to respond to inquiries and improve the site. We never sell your data. Third parties: Streamlit Cloud, ip-api.com, Google AdSense. Contact: deslandes78@gmail.com.</p>
+    </details>
+    <details><summary>📜 Terms of Service</summary>
+      <p><strong>Terms of Service</strong></p>
+      <p>Software is delivered as source code by email with a non-exclusive, perpetual license. Sales are final. Demos are provided as-is. Governed by Haitian law.</p>
+    </details>
+    <details><summary>📜 Disclaimer</summary>
+      <p><strong>Disclaimer</strong></p>
+      <p>All software and information are provided "as is." Not legal, financial, or medical advice. Third-party links (Sendwave, Western Union) are out of our control. Contact: deslandes78@gmail.com.</p>
+    </details>
+
+    <p class="sidebar-foot">© <span class="year"></span> GlobalInternet.py</p>
+  </div>
+</aside>
+<div id="overlay" class="overlay"></div>
+
+<!-- ================= MAIN ================= -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <span class="big-globe">🌐</span>
+    <h1 data-i18n="hero_title">GlobalInternet.py</h1>
+    <p data-i18n="hero_sub">Build with Python. Deliver with Speed. Innovate with AI.</p>
+    <p data-i18n="hero_desc">From Haiti to the world – custom software that works online.</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <h2 data-i18n="about_title">👨‍💻 About the Company</h2>
+    <div class="two-col">
+      <div data-i18n-html="about_text"></div>
+      <div class="card">
+        <h3 data-i18n="founder">Founder & CEO</h3>
+        <p><strong data-i18n="founder_name">Gesner Deslandes</strong></p>
+        <p data-i18n="founder_title">Engineer | AI Enthusiast | Python Expert</p>
+        <p>📞 (509)-47385663</p>
+        <p>✉️ deslandes78@gmail.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVATAR VIDEO -->
+  <section class="section center">
+    <video class="video-frame" src="https://github.com/Deslandes1/Gesner-Deslandes-Avatar/blob/main/avatar_video.mp4.mp4?raw=true" controls playsinline></video>
+    <p class="caption" data-i18n="office_photo_caption">Gesner Deslandes talking avatar – introducing GlobalInternet.py</p>
+  </section>
+
+  <!-- OWNER CV -->
+  <section class="section">
+    <h2 data-i18n="cv_title">📄 About the Owner – Gesner Deslandes</h2>
+    <div class="two-col">
+      <div>
+        <video class="video-frame" src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20The%20Owner%20(1).mp4" controls playsinline></video>
+        <p class="caption">Gesner Deslandes – Owner & Founder</p>
+      </div>
+      <div>
+        <h3 data-i18n="cv_intro">Python Software Builder | Web Developer | Technology Coordinator</h3>
+        <div data-i18n-html="cv_summary"></div>
+        <p>📄 <a href="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Gesner%20Deslandes%20CV%20Python%202026.docx" target="_blank" rel="noopener"><strong>Download my CV (Python Developer 2026)</strong></a></p>
+        <details><summary data-i18n="cv_experience_title">💼 Professional Experience</summary><div data-i18n-html="cv_experience"></div></details>
+        <details><summary data-i18n="cv_education_title">🎓 Education & Training</summary><div data-i18n-html="cv_education"></div></details>
+      </div>
+    </div>
+    <p class="caption" data-i18n="cv_references">📞 References available upon request.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TEAM -->
+  <section class="section">
+    <h2 data-i18n="team_title">👥 Our Team</h2>
+    <p><em data-i18n="team_sub">Meet the talented people behind GlobalInternet.py – hired April 2026.</em></p>
+    <div id="team-grid" class="team-grid"></div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- HUMANOID ROBOTICS -->
+  <section class="section">
+    <h2>🤖 Leveling Up Our Software: Humanoid Robotics</h2>
+    <p><em>From Python scripts to embodied AI – the next frontier.</em></p>
+    <video class="video-frame" src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Robotics.mp4" controls playsinline></video>
+    <div class="two-col small">
+      <p class="caption">📽️ Demo: Python-controlled humanoid robot in motion. Our software is evolving from screen to physical AI.</p>
+      <div>
+        <strong>🧠 Where we are taking our software:</strong>
+        <ul class="bullets">
+          <li>🤖 Humanoid Robotics Integration – Controlling humanoid robots with Python</li>
+          <li>🧬 Physical AI (VLA Models) – Bridging code and real-world movement</li>
+          <li>🏭 Industrial Automation – Deploying humanoids in factories and logistics</li>
+          <li>🏠 Service & Companion Robots – AI that walks, talks, and assists</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FUTURE PROJECTS -->
+  <section class="section">
+    <h2>🚀 Projects in Perspective</h2>
+    <p><em>What we are building next – innovations on the horizon.</em></p>
+    <div id="future-grid" class="three-grid"></div>
+    <p class="caption">📢 These projects represent our vision for the future. Each will be built with Python, AI, and human-centered design. Interested in collaborating or investing? Contact us.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SERVICES -->
+  <section class="section">
+    <h2 data-i18n="services_title">⚙️ Our Services</h2>
+    <div id="services-grid" class="three-grid"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section">
+    <h2 data-i18n="projects_title">🏆 Our Projects & Accomplishments</h2>
+    <p><em data-i18n="projects_sub">Complete software solutions delivered to clients – ready to purchase or customize.</em></p>
+    <div id="projects-grid" class="two-grid"></div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SENDWAVE -->
+  <section class="section">
+    <h2 data-i18n="sendwave_title">📱 Send Money to Haiti Like a Text – Fast, Fair, and Finally Affordable</h2>
+    <div class="two-col">
+      <div>
+        <p data-i18n="sendwave_intro"></p>
+        <div data-i18n-html="sendwave_reasons"></div>
+        <p data-i18n="sendwave_cta"></p>
+        <p data-i18n-html="sendwave_link"></p>
+      </div>
+      <div>
+        <p><strong data-i18n="sendwave_watch_ad">📺 Watch our ad – Sendwave</strong></p>
+        <video id="sendwaveVideo" class="video-frame" src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/main/Sendwave%20marketing%202026.MP4" muted playsinline loop controls></video>
+        <p class="caption">📢 Sendwave ad – Less transfer fees, less drama</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- WESTERN UNION -->
+  <section class="section">
+    <h2 data-i18n="western_union_title">✨✨✨ WESTERN UNION – HAITI ✨✨✨</h2>
+    <div class="two-col">
+      <div data-i18n-html="western_union_text"></div>
+      <div>
+        <p><strong data-i18n="western_union_watch_ad">📺 Watch our ad – Western Union</strong></p>
+        <video id="wuVideo" class="video-frame" src="https://raw.githubusercontent.com/Deslandes1/globalinternet_site.py/refs/heads/main/WesterUnionPub.MP4" muted playsinline loop controls></video>
+        <p class="caption">📢 Western Union ad – Trusted worldwide</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- DONATION -->
+  <section class="section">
+    <h2 data-i18n="donation_title">💖 Support GlobalInternet.py</h2>
+    <div class="donation-box">
+      <h3 data-i18n="donation_text"></h3>
+      <p data-i18n="donation_sub"></p>
+      <br>
+      <p><strong data-i18n="donation_method"></strong></p>
+      <p class="big-num" data-i18n="donation_phone"></p>
+      <p><strong data-i18n="donation_limit"></strong></p>
+      <p><em data-i18n="donation_instruction"></em></p>
+      <br>
+      <p><strong data-i18n-html="donation_sendwave_title"></strong></p>
+      <p data-i18n="donation_sendwave_instruction"></p>
+      <p class="big-num" data-i18n="donation_sendwave_phone"></p>
+      <br>
+      <p><strong data-i18n="donation_bank_title"></strong></p>
+      <p class="big-num" data-i18n="donation_bank_account"></p>
+      <p><em data-i18n="donation_bank_note"></em></p>
+      <br>
+      <p><strong data-i18n="donation_future"></strong></p>
+      <button id="donation-btn" class="btn-primary" data-i18n="donation_button">💸 I've sent my donation – notify me</button>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section center">
+    <h2 data-i18n="contact_title">📞 Let's Build Something Great</h2>
+    <div class="contact-box">
+      <h3 data-i18n="contact_ready"></h3>
+      <p data-i18n="contact_phone"></p>
+      <p data-i18n="contact_email"></p>
+      <p data-i18n="contact_delivery"></p>
+      <p><em data-i18n="contact_tagline"></em></p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <p>© <span class="year"></span> GlobalInternet.py – <span data-i18n="footer_rights">All rights reserved.</span></p>
+  <p data-i18n="footer_founded">Founded by Gesner Deslandes | Built with Streamlit | Hosted on GitHub + Streamlit Cloud</p>
+  <p data-i18n="footer_pride">🇭🇹 Proudly Haitian – serving the world with Python and AI 🇭🇹</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
