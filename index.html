@@ -28,9 +28,9 @@
   --muted:#93a3c4;
 
   /* Bright blue palette */
-  --brand:#2563eb;            /* primary */
-  --brand-2:#3b82f6;          /* secondary */
-  --brand-light:#60a5fa;      /* light accent */
+  --brand:#2563eb;
+  --brand-2:#3b82f6;
+  --brand-light:#60a5fa;
   --brand-glow:rgba(37,99,235,.55);
 
   --grad:linear-gradient(135deg,#60a5fa 0%,#3b82f6 45%,#2563eb 100%);
@@ -53,7 +53,7 @@ body{
   background:var(--bg);
   color:var(--txt);
   font-family:var(--font-b);
-  font-size:1rem;                 /* = 14pt */
+  font-size:1rem;
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
@@ -348,7 +348,7 @@ header{
 .donation-box h3{color:#93c5fd;margin-bottom:.5rem}
 .big-num{font-size:1.25rem;font-weight:700;color:#93c5fd;margin:.4rem 0}
 
-/* ---------- Team grid (populated by app.js) ---------- */
+/* ---------- Team grid ---------- */
 .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.15rem}
 .team-card{background:linear-gradient(165deg,var(--card),var(--bg-2));border:1px solid var(--line);border-radius:14px;padding:1.2rem;text-align:center}
 .team-card img{width:80px;height:80px;border-radius:50%;margin:0 auto .8rem;object-fit:cover;border:2px solid rgba(96,165,250,.4)}
@@ -1072,12 +1072,10 @@ footer{border-top:1px solid var(--line);padding:2.8rem 0 2rem;background:rgba(3,
 <!-- ================= FLOATING CONTACT ================= -->
 <a class="float-contact" href="mailto:deslandes78@gmail.com?subject=Project%20Inquiry" aria-label="Contact us">✉️</a>
 
+<!-- ============================================================
+     1. UI interactions (nav, drawer, reveal, year, view counter)
+     ============================================================ -->
 <script>
-/* ============================================================
-   Layout interactions — nav, sidebar drawer, reveal, year, view counter
-   (app.js continues to handle language, voice, forms — keep it loaded)
-   ============================================================ */
-
 /* ---------- Mobile nav ---------- */
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
@@ -1134,15 +1132,12 @@ document.querySelectorAll('.year').forEach(el => {
   el.textContent = new Date().getFullYear();
 });
 
-/* ============================================================
-   VIEW COUNTER (PiPlis-style) — per-video, starts at 1k
-   ============================================================ */
+/* ---------- VIEW COUNTER (PiPlis-style) — per-video, starts at 1k ---------- */
 (function () {
   const PREFIX = 'gt_views_';
   const BASE = 1000;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* 1000 -> "1k" | 1240 -> "1.2k" | 14300 -> "14k" | 1250000 -> "1.3M" */
   function format(n) {
     if (n < 1000) return String(n);
     if (n < 10000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
@@ -1161,7 +1156,7 @@ document.querySelectorAll('.year').forEach(el => {
     try { seen = sessionStorage.getItem(PREFIX + key + '_seen') === '1'; } catch (e) {}
 
     if (!seen) {
-      n += 1 + Math.floor(Math.random() * 4);          /* real visit */
+      n += 1 + Math.floor(Math.random() * 4);
       try { sessionStorage.setItem(PREFIX + key + '_seen', '1'); } catch (e) {}
     }
 
@@ -1172,7 +1167,6 @@ document.querySelectorAll('.year').forEach(el => {
   function animate(btn, target) {
     const num = btn.querySelector('.vc-num');
     if (!num) return;
-
     if (reduce || target <= BASE) { num.textContent = format(target); return; }
 
     const dur = 1800;
@@ -1215,7 +1209,414 @@ document.querySelectorAll('.year').forEach(el => {
 })();
 </script>
 
-<!-- Your existing app.js continues to handle language, voice, and forms -->
+<!-- ============================================================
+     2. AUTO LANGUAGE TRANSLATION (EN / FR / ES)
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  const translations = {
+    /* ============== FRANÇAIS ============== */
+    fr: {
+      "Home": "Accueil",
+      "About": "À propos",
+      "Services": "Services",
+      "Custom Build": "Sur mesure",
+      "Projects": "Projets",
+      "Certifications": "Certifications",
+      "Contact": "Contact",
+      "Get a Quote": "Obtenir un devis",
+      "Software & Websites": "Logiciels et sites Web",
+      "Build with Python. Deliver with Speed. Innovate with AI.":
+        "Construisez avec Python. Livrez avec rapidité. Innovez avec l'IA.",
+      "From Haiti to the world — custom software that works online.":
+        "D'Haïti au monde — des logiciels sur mesure qui fonctionnent en ligne.",
+      "💻 Request a Quote →": "💻 Demander un devis →",
+      "🏆 View Projects": "🏆 Voir les projets",
+      "Ready Products": "Produits prêts",
+      "Email Delivery": "Livraison par e-mail",
+      "Powered Builds": "Constructions IA",
+      "Haiti to the World": "D'Haïti au monde",
+      "About the Company": "À propos de l'entreprise",
+      "👨‍💻 About": "👨‍💻 À propos de",
+      "Talking Avatar": "Avatar parlant",
+      "Meet the": "Rencontrez le",
+      "founder": "fondateur",
+      "in motion": "en mouvement",
+      "About the Owner": "À propos du propriétaire",
+      "Our Team": "Notre équipe",
+      "👥 The people behind": "👥 Les personnes derrière",
+      "Next Frontier": "Nouvelle frontière",
+      "🤖 Humanoid": "🤖 Humanoïde",
+      "Robotics": "Robotique",
+      "From Python scripts to embodied AI — the next frontier.":
+        "Des scripts Python à l'IA incarnée — la prochaine frontière.",
+      "Demo: Python-controlled humanoid robot in motion.":
+        "Démo : Robot humanoïde contrôlé par Python en mouvement.",
+      "🧠 Where we're taking our software": "🧠 Où nous menons notre logiciel",
+      "📢 Want to collaborate?": "📢 Vous voulez collaborer ?",
+      "Start a Conversation": "Démarrer une conversation",
+      "Coming Soon": "Bientôt disponible",
+      "🚀 Projects in": "🚀 Projets en",
+      "Perspective": "Perspective",
+      "What we are building next — innovations on the horizon.":
+        "Ce que nous construisons ensuite — innovations à l'horizon.",
+      "📢 Interested in collaborating or investing?":
+        "📢 Intéressé par une collaboration ou un investissement ?",
+      "Contact us": "Contactez-nous",
+      "Our Services": "Nos services",
+      "⚙️ What we": "⚙️ Ce que nous",
+      "deliver": "livrons",
+      "Custom Development": "Développement sur mesure",
+      "💻 Custom Software &": "💻 Logiciels sur mesure et",
+      "Website Building": "Création de sites Web",
+      "📦 One-Time Purchase — Email Delivery":
+        "📦 Achat unique — Livraison par e-mail",
+      "📅 Monthly Subscription — Hosted Online":
+        "📅 Abonnement mensuel — Hébergé en ligne",
+      "📩 Request a Quote": "📩 Demander un devis",
+      "📅 Start Subscription": "📅 Commencer l'abonnement",
+      "🛠️ What we build:": "🛠️ Ce que nous construisons :",
+      "Portfolio": "Portfolio",
+      "🏆 Projects &": "🏆 Projets et",
+      "Accomplishments": "Réalisations",
+      "Complete software solutions delivered to clients — ready to purchase or customize.":
+        "Solutions logicielles complètes livrées aux clients — prêtes à acheter ou à personnaliser.",
+      "Featured Websites": "Sites Web en vedette",
+      "🌟 Built by": "🌟 Construits par",
+      "We've built websites and software used by businesses and organizations worldwide. Here are two flagship projects:":
+        "Nous avons créé des sites Web et des logiciels utilisés par des entreprises et des organisations du monde entier. Voici deux projets phares :",
+      "Want a website like these?": "Vous voulez un site Web comme ceux-ci ?",
+      "Request a quote": "Demander un devis",
+      "— negotiable, competitive pricing.": "— prix négociables et compétitifs.",
+      "🏅 Credentials that": "🏅 Des références qui",
+      "back the build": "soutiennent la construction",
+      "View Certificate →": "Voir le certificat →",
+      "Money Transfer": "Transfert d'argent",
+      "📱 Send Money to Haiti Like a Text":
+        "📱 Envoyez de l'argent en Haïti comme un texto",
+      "Fast, fair, and finally affordable.":
+        "Rapide, équitable et enfin abordable.",
+      "📢 Sendwave ad — Less transfer fees, less drama":
+        "📢 Publicité Sendwave — Moins de frais de transfert, moins de drame",
+      "✨✨✨ WESTERN UNION – HAITI ✨✨✨":
+        "✨✨✨ WESTERN UNION – HAÏTI ✨✨✨",
+      "📢 Western Union ad — Trusted worldwide":
+        "📢 Publicité Western Union — Fiable dans le monde entier",
+      "Support Us": "Soutenez-nous",
+      "💖 Support GlobalTechnology.com": "💖 Soutenez GlobalTechnology.com",
+      "💸 I've sent my donation — notify me":
+        "💸 J'ai envoyé mon don — prévenez-moi",
+      "Contact Us": "Contactez-nous",
+      "📞 Let's get your technology": "📞 Faisons fonctionner votre technologie",
+      "working": "correctement",
+      "Call, message, or send the form below — we usually respond the same business day.":
+        "Appelez, envoyez un message ou utilisez le formulaire ci-dessous — nous répondons généralement le même jour ouvrable.",
+      "🇭🇹 Haiti HQ (Main)": "🇭🇹 Siège en Haïti (principal)",
+      "📞 Phone / WhatsApp: (509) 4738-5663":
+        "📞 Téléphone / WhatsApp : (509) 4738-5663",
+      "✉️ Email: deslandes78@gmail.com":
+        "✉️ E-mail : deslandes78@gmail.com",
+      "🇺🇸 Tampa Office": "🇺🇸 Bureau de Tampa",
+      "We deliver full software packages by email — fast, reliable, and tailored to you.":
+        "Nous livrons des progiciels complets par e-mail — rapides, fiables et adaptés à vos besoins.",
+      "GlobalTechnology.com — Your Python partner, from Haiti to the world.":
+        "GlobalTechnology.com — Votre partenaire Python, d'Haïti au monde.",
+      "References available upon request.":
+        "Références disponibles sur demande.",
+      "Download my CV (Python Developer 2026)":
+        "Télécharger mon CV (Développeur Python 2026)",
+      "Gesner Deslandes talking avatar — introducing GlobalTechnology.com":
+        "Avatar parlant de Gesner Deslandes — présentant GlobalTechnology.com",
+      "Gesner Deslandes — Owner & Founder":
+        "Gesner Deslandes — Propriétaire et fondateur",
+      "Founder & CEO": "Fondateur et PDG",
+      "Founder & Developer": "Fondateur et développeur",
+      "Engineer | AI Enthusiast | Python Expert":
+        "Ingénieur | Passionné d'IA | Expert Python",
+      "Contact the Founder": "Contacter le fondateur",
+      "Explore": "Explorer",
+      "All rights reserved.": "Tous droits réservés.",
+      "Proudly Haitian — serving the world with Python and AI":
+        "Fièrement haïtien — au service du monde avec Python et l'IA",
+      "🎤 Voice Language": "🎤 Langue vocale",
+      "🎙️ AI Female Voice — Company Overview":
+        "🎙️ Voix féminine IA — Présentation de l'entreprise",
+      "📱 Connect With Us": "📱 Connectez-vous avec nous",
+      "📄 My CV": "📄 Mon CV",
+      "📥 Download CV (Python Developer 2026)":
+        "📥 Télécharger le CV (Développeur Python 2026)",
+      "Legal": "Mentions légales",
+      "📜 Privacy Policy": "📜 Politique de confidentialité",
+      "📜 Terms of Service": "📜 Conditions d'utilisation",
+      "📜 Disclaimer": "📜 Avis de non-responsabilité",
+      "Open info panel": "Ouvrir le panneau d'informations",
+      "Open menu": "Ouvrir le menu",
+      "Close menu": "Fermer le menu",
+      "Interface language": "Langue de l'interface",
+      "Contact us": "Contactez-nous"
+    },
+
+    /* ============== ESPAÑOL ============== */
+    es: {
+      "Home": "Inicio",
+      "About": "Acerca de",
+      "Services": "Servicios",
+      "Custom Build": "Personalizado",
+      "Projects": "Proyectos",
+      "Certifications": "Certificaciones",
+      "Contact": "Contacto",
+      "Get a Quote": "Obtener cotización",
+      "Software & Websites": "Software y sitios web",
+      "Build with Python. Deliver with Speed. Innovate with AI.":
+        "Construye con Python. Entrega con velocidad. Innova con IA.",
+      "From Haiti to the world — custom software that works online.":
+        "De Haití al mundo — software personalizado que funciona en línea.",
+      "💻 Request a Quote →": "💻 Solicitar cotización →",
+      "🏆 View Projects": "🏆 Ver proyectos",
+      "Ready Products": "Productos listos",
+      "Email Delivery": "Entrega por correo",
+      "Powered Builds": "Construcciones IA",
+      "Haiti to the World": "De Haití al mundo",
+      "About the Company": "Acerca de la empresa",
+      "👨‍💻 About": "👨‍💻 Acerca de",
+      "Talking Avatar": "Avatar parlante",
+      "Meet the": "Conoce al",
+      "founder": "fundador",
+      "in motion": "en movimiento",
+      "About the Owner": "Acerca del propietario",
+      "Our Team": "Nuestro equipo",
+      "👥 The people behind": "👥 Las personas detrás de",
+      "Next Frontier": "Nueva frontera",
+      "🤖 Humanoid": "🤖 Humanoide",
+      "Robotics": "Robótica",
+      "From Python scripts to embodied AI — the next frontier.":
+        "De scripts Python a IA corpórea — la próxima frontera.",
+      "Demo: Python-controlled humanoid robot in motion.":
+        "Demostración: Robot humanoide controlado por Python en movimiento.",
+      "🧠 Where we're taking our software": "🧠 A dónde llevamos nuestro software",
+      "📢 Want to collaborate?": "📢 ¿Quieres colaborar?",
+      "Start a Conversation": "Iniciar una conversación",
+      "Coming Soon": "Próximamente",
+      "🚀 Projects in": "🚀 Proyectos en",
+      "Perspective": "Perspectiva",
+      "What we are building next — innovations on the horizon.":
+        "Lo que construimos a continuación — innovaciones en el horizonte.",
+      "📢 Interested in collaborating or investing?":
+        "📢 ¿Interesado en colaborar o invertir?",
+      "Contact us": "Contáctanos",
+      "Our Services": "Nuestros servicios",
+      "⚙️ What we": "⚙️ Lo que",
+      "deliver": "entregamos",
+      "Custom Development": "Desarrollo personalizado",
+      "💻 Custom Software &": "💻 Software personalizado y",
+      "Website Building": "Creación de sitios web",
+      "📦 One-Time Purchase — Email Delivery":
+        "📦 Compra única — Entrega por correo electrónico",
+      "📅 Monthly Subscription — Hosted Online":
+        "📅 Suscripción mensual — Alojado en línea",
+      "📩 Request a Quote": "📩 Solicitar cotización",
+      "📅 Start Subscription": "📅 Iniciar suscripción",
+      "🛠️ What we build:": "🛠️ Lo que construimos:",
+      "Portfolio": "Portafolio",
+      "🏆 Projects &": "🏆 Proyectos y",
+      "Accomplishments": "Logros",
+      "Complete software solutions delivered to clients — ready to purchase or customize.":
+        "Soluciones de software completas entregadas a clientes — listas para comprar o personalizar.",
+      "Featured Websites": "Sitios web destacados",
+      "🌟 Built by": "🌟 Construidos por",
+      "We've built websites and software used by businesses and organizations worldwide. Here are two flagship projects:":
+        "Hemos creado sitios web y software utilizados por empresas y organizaciones de todo el mundo. Aquí hay dos proyectos emblemáticos:",
+      "Want a website like these?": "¿Quieres un sitio web como estos?",
+      "Request a quote": "Solicitar cotización",
+      "— negotiable, competitive pricing.": "— precios negociables y competitivos.",
+      "🏅 Credentials that": "🏅 Credenciales que",
+      "back the build": "respaldan la construcción",
+      "View Certificate →": "Ver certificado →",
+      "Money Transfer": "Transferencia de dinero",
+      "📱 Send Money to Haiti Like a Text":
+        "📱 Envía dinero a Haití como un mensaje de texto",
+      "Fast, fair, and finally affordable.":
+        "Rápido, justo y finalmente asequible.",
+      "📢 Sendwave ad — Less transfer fees, less drama":
+        "📢 Anuncio de Sendwave — Menos comisiones, menos drama",
+      "✨✨✨ WESTERN UNION – HAITI ✨✨✨":
+        "✨✨✨ WESTERN UNION – HAITÍ ✨✨✨",
+      "📢 Western Union ad — Trusted worldwide":
+        "📢 Anuncio de Western Union — Confiable en todo el mundo",
+      "Support Us": "Apóyanos",
+      "💖 Support GlobalTechnology.com": "💖 Apoya a GlobalTechnology.com",
+      "💸 I've sent my donation — notify me":
+        "💸 He enviado mi donación — notifícame",
+      "Contact Us": "Contáctanos",
+      "📞 Let's get your technology": "📞 Hagamos que tu tecnología",
+      "working": "funcione",
+      "Call, message, or send the form below — we usually respond the same business day.":
+        "Llama, envía un mensaje o usa el formulario a continuación — normalmente respondemos el mismo día hábil.",
+      "🇭🇹 Haiti HQ (Main)": "🇭🇹 Sede en Haití (principal)",
+      "📞 Phone / WhatsApp: (509) 4738-5663":
+        "📞 Teléfono / WhatsApp: (509) 4738-5663",
+      "✉️ Email: deslandes78@gmail.com":
+        "✉️ Correo: deslandes78@gmail.com",
+      "🇺🇸 Tampa Office": "🇺🇸 Oficina de Tampa",
+      "We deliver full software packages by email — fast, reliable, and tailored to you.":
+        "Entregamos paquetes de software completos por correo electrónico — rápidos, confiables y adaptados a ti.",
+      "GlobalTechnology.com — Your Python partner, from Haiti to the world.":
+        "GlobalTechnology.com — Tu socio de Python, de Haití al mundo.",
+      "References available upon request.":
+        "Referencias disponibles a solicitud.",
+      "Download my CV (Python Developer 2026)":
+        "Descargar mi CV (Desarrollador Python 2026)",
+      "Gesner Deslandes talking avatar — introducing GlobalTechnology.com":
+        "Avatar parlante de Gesner Deslandes — presentando GlobalTechnology.com",
+      "Gesner Deslandes — Owner & Founder":
+        "Gesner Deslandes — Propietario y fundador",
+      "Founder & CEO": "Fundador y CEO",
+      "Founder & Developer": "Fundador y desarrollador",
+      "Engineer | AI Enthusiast | Python Expert":
+        "Ingeniero | Entusiasta de IA | Experto en Python",
+      "Contact the Founder": "Contactar al fundador",
+      "Explore": "Explorar",
+      "All rights reserved.": "Todos los derechos reservados.",
+      "Proudly Haitian — serving the world with Python and AI":
+        "Orgullosamente haitiano — sirviendo al mundo con Python e IA",
+      "🎤 Voice Language": "🎤 Idioma de voz",
+      "🎙️ AI Female Voice — Company Overview":
+        "🎙️ Voz femenina IA — Resumen de la empresa",
+      "📱 Connect With Us": "📱 Conéctate con nosotros",
+      "📄 My CV": "📄 Mi CV",
+      "📥 Download CV (Python Developer 2026)":
+        "📥 Descargar CV (Desarrollador Python 2026)",
+      "Legal": "Legal",
+      "📜 Privacy Policy": "📜 Política de privacidad",
+      "📜 Terms of Service": "📜 Términos de servicio",
+      "📜 Disclaimer": "📜 Aviso legal",
+      "Open info panel": "Abrir panel de información",
+      "Open menu": "Abrir menú",
+      "Close menu": "Cerrar menú",
+      "Interface language": "Idioma de la interfaz",
+      "Contact us": "Contáctanos"
+    }
+  };
+
+  function shouldSkip(node) {
+    const p = node.parentElement;
+    if (!p) return true;
+    return /^(SCRIPT|STYLE|NOSCRIPT)$/.test(p.tagName);
+  }
+
+  function captureOriginals() {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(n) {
+          if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (shouldSkip(n)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+    let n;
+    while ((n = walker.nextNode())) {
+      if (n.__orig === undefined) n.__orig = n.nodeValue;
+    }
+
+    document.querySelectorAll('[placeholder]').forEach(el => {
+      if (el.__origPH === undefined) el.__origPH = el.placeholder;
+    });
+    document.querySelectorAll('[aria-label]').forEach(el => {
+      if (el.__origAria === undefined) el.__origAria = el.getAttribute('aria-label');
+    });
+    document.querySelectorAll('[title]').forEach(el => {
+      if (el.__origTitle === undefined) el.__origTitle = el.getAttribute('title');
+    });
+  }
+
+  function applyLanguage(lang) {
+    if (lang !== 'en' && lang !== 'fr' && lang !== 'es') lang = 'en';
+    const dict = lang === 'en' ? null : translations[lang];
+
+    document.documentElement.lang = lang;
+
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(n) {
+          if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (shouldSkip(n)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    nodes.forEach(node => {
+      const orig = node.__orig !== undefined ? node.__orig : node.nodeValue;
+      const key = orig.trim();
+      if (dict && dict[key] !== undefined) {
+        const lead  = orig.match(/^\s*/)[0];
+        const trail = orig.match(/\s*$/)[0];
+        node.nodeValue = lead + dict[key] + trail;
+      } else {
+        node.nodeValue = orig;
+      }
+    });
+
+    document.querySelectorAll('[placeholder]').forEach(el => {
+      const orig = el.__origPH !== undefined ? el.__origPH : el.placeholder;
+      el.placeholder = (dict && dict[orig]) || orig;
+    });
+
+    document.querySelectorAll('[aria-label]').forEach(el => {
+      const orig = el.__origAria !== undefined
+        ? el.__origAria
+        : el.getAttribute('aria-label');
+      el.setAttribute('aria-label', (dict && dict[orig]) || orig);
+    });
+
+    document.querySelectorAll('[title]').forEach(el => {
+      const orig = el.__origTitle !== undefined
+        ? el.__origTitle
+        : el.getAttribute('title');
+      el.setAttribute('title', (dict && dict[orig]) || orig);
+    });
+
+    try { localStorage.setItem('gt_lang', lang); } catch (e) {}
+  }
+
+  function init() {
+    captureOriginals();
+
+    const sel = document.getElementById('lang-select');
+    if (!sel) return;
+
+    let saved = 'en';
+    try { saved = localStorage.getItem('gt_lang') || 'en'; } catch (e) {}
+    if (saved !== 'en') {
+      sel.value = saved;
+      applyLanguage(saved);
+    }
+
+    sel.addEventListener('change', function (e) {
+      e.stopImmediatePropagation();
+      applyLanguage(e.target.value);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<!-- Your existing app.js continues to handle voice, forms, dynamic grids -->
 <script src="app.js"></script>
 </body>
 </html>
